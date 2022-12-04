@@ -1,0 +1,3 @@
+Click on the Start button (or push the Windows key on your keyboard)
+Type "Adjust the appearance and performance of Windows" and select it from the suggestions menu.
+Uncheck the checkbox for "Animate windows when minimizing and maximizing".

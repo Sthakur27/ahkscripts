@@ -41,7 +41,7 @@ changeWindowSize(shouldMax){
 	}
 }
 
-isMaxed = 0
+;isMaxed = 0
 
 ;toggleWindowMax() {
 ;	Static isMaxed := 0 
@@ -52,12 +52,14 @@ isMaxed = 0
 
 Home::
 	toggleWindowMax() {
+	Static isMaxed := 0 
 	isMaxed := !isMaxed 
 	changeWindowSize(isMaxed)
 }
 
-~XButton1 & ~LButton:: 
+XButton2 & RButton:: 
 	toggleWindowMax2() {
+	Static isMaxed := 0 
 	isMaxed := !isMaxed 
 	changeWindowSize(isMaxed)
 }

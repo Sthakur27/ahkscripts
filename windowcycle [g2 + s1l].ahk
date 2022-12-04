@@ -3,7 +3,8 @@
 Send #+{Left}
 return
 
-~XButton2 & ~LButton::   ; regular action
+
+XButton2 & LButton::   ; regular action
   Send #+{Left}
 return
 
