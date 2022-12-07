@@ -130,10 +130,10 @@ Numpad8::switchDesktopByNumber(CurrentDesktop - 1)
 Numpad9::switchDesktopByNumber(CurrentDesktop + 1)
 
  
-~XButton2 & WheelDown::   ; go to left virtual desktop
+XButton2 & WheelDown::   ; go to left virtual desktop
   switchDesktopByNumber(CurrentDesktop - 1)
 return
 
-~XButton2 & WheelUp::   ; go to right virtual desktop
+XButton2 & WheelUp::   ; go to right virtual desktop
   switchDesktopByNumber(CurrentDesktop + 1)
 return
