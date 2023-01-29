@@ -1,9 +1,9 @@
 changeDevice(deviceNum){
 	if(deviceNum){
-		;alt o
+		;this is sending alt + o
 		Send, !o
 	} else {
-		;alt p
+		;this is sending alt + p
 		Send, !p
 	}
 }

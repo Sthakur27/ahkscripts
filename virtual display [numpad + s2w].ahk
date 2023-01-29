@@ -1,7 +1,7 @@
 SetKeyDelay, -1 ; 0
 ; Globals
 DesktopCount = 2 ; Windows starts with 2 desktops at boot
-CurrentDesktop = 1 ; Desktop count is 1-indexed (Microsoft numbers them this way)
+CurrentDesktop := 1 ; Desktop count is 1-indexed (Microsoft numbers them this way)
 ;
 ; This function examines the registry to build an accurate list of the current virtual desktops and which one we're currently on.
 ; Current desktop UUID appears to be in HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\SessionInfo\1\VirtualDesktops
@@ -69,26 +69,40 @@ getSessionId()
 switchDesktopByNumber(targetDesktop)
 {
  global CurrentDesktop, DesktopCount
+ ;msgbox, [start] target: %targetDesktop% current: %CurrentDesktop%
+ ;ListVars
+ ;Pause
+ 
+ 
  ; Re-generate the list of desktops and where we fit in that. We do this because
  ; the user may have switched desktops via some other means than the script.
  mapDesktopsFromRegistry()
  ; Don't attempt to switch to an invalid desktop
  if (targetDesktop > DesktopCount || targetDesktop < 1) {
- OutputDebug, [invalid] target: %targetDesktop% current: %CurrentDesktop%
+ ; OutputDebug, [invalid] target: %targetDesktop% current: %CurrentDesktop%
+ ; msgbox, [invalid] target: %targetDesktop% current: %CurrentDesktop%
  return
  }
+ 
+ 
  ; Go right until we reach the desktop we want
  while(CurrentDesktop < targetDesktop) {
+ ;msgbox, moving right
  Send ^#{Right}
  CurrentDesktop++
- OutputDebug, [right] target: %targetDesktop% current: %CurrentDesktop%
+ ;OutputDebug, [right] target: %targetDesktop% current: %CurrentDesktop%
  }
+ 
+ 
+ ;msgbox, Current Desktop is %CurrentDesktop%, targetDesktop is %targetDesktop%
  ; Go left until we reach the desktop we want
  while(CurrentDesktop > targetDesktop) {
+ ;msgbox, moving left
  Send ^#{Left}
  CurrentDesktop--
- OutputDebug, [left] target: %targetDesktop% current: %CurrentDesktop%
+ ;OutputDebug, [left] target: %targetDesktop% current: %CurrentDesktop%
  }
+ ;msgbox, [Finished] target: %targetDesktop% current: %CurrentDesktop%
 }
 ;
 ; This function creates a new virtual desktop and switches to it
@@ -118,16 +132,36 @@ mapDesktopsFromRegistry()
 OutputDebug, [loading] desktops: %DesktopCount% current: %CurrentDesktop%
 ; User config!
 ; This section binds the key combo to the switch/create/delete actions
-Numpad0::Send,{LWin down}{Tab down}{LWin up}{Tab up}
-Numpad1::switchDesktopByNumber(1)
-Numpad2::switchDesktopByNumber(2)
-Numpad3::switchDesktopByNumber(3)
-Numpad4::switchDesktopByNumber(4)
-Numpad5::switchDesktopByNumber(5)
-Numpad6::switchDesktopByNumber(6)
-Numpad7::switchDesktopByNumber(7)
-Numpad8::switchDesktopByNumber(CurrentDesktop - 1)
-Numpad9::switchDesktopByNumber(CurrentDesktop + 1)
+Numpad0::
+	Send,{LWin down}{Tab down}{LWin up}{Tab up}
+return 
+Numpad1::
+	switchDesktopByNumber(1)
+return 
+Numpad2::
+	switchDesktopByNumber(2)
+return
+Numpad3::
+	switchDesktopByNumber(3)
+return
+Numpad4::
+	switchDesktopByNumber(4)
+return
+Numpad5::
+	switchDesktopByNumber(5)
+return
+Numpad6::
+	switchDesktopByNumber(6)
+return
+Numpad7::
+	switchDesktopByNumber(7)
+return
+Numpad8::
+	switchDesktopByNumber(CurrentDesktop - 1)
+return
+Numpad9::
+	switchDesktopByNumber(CurrentDesktop + 1)
+return
 
  
 XButton2 & WheelDown::   ; go to left virtual desktop
