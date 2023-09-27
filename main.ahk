@@ -10,10 +10,10 @@ XButton2::   ; regular action
   send, {XButton2}
 return
 #Include volume [s1w].ahk
-#Include audiodevice [g6 + s2l].ahk
+#Include audiodevice [g6].ahk
 #Include cyclebackground [g4].ahk
 #Include displaytoggle [g3].ahk
 #Include toggle icons and task bar [. + s2r].ahk
-#Include virtual display [numpad + s2w].ahk
+#Include virtual display [numpad + s2wheel].ahk
 #Include window min max [home + s1r].ahk
 #Include windowcycle [g2 + s1l].ahk

@@ -22,10 +22,10 @@ toggleAudioDevice() {
 }
 
 
-XButton1 & LButton::
-toggleAudioDevice2() {
-	Static deviceNum := 0 
-	deviceNum := !deviceNum 
-	;MsgBox % deviceNum
-	changeDevice(deviceNum)
-}
+;XButton1 & LButton::
+;toggleAudioDevice2() {
+;	Static deviceNum := 0 
+;	deviceNum := !deviceNum 
+;	;MsgBox % deviceNum
+;	changeDevice(deviceNum)
+;}
